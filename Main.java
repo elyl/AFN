@@ -8,12 +8,12 @@ public class Main
 {
     public static void main(String args[])
     {
-	LinkedList<Etat>		etats;
-	LinkedList<Transition>		transitions;
+	LinkedList<Etat>			etats;
+	LinkedList<Transition>			transitions;
 	HashMap<Integer, List<Transition>>	m;
-	AFN				a;
-	Etat				e1, e2, e3, e4;
-
+	AFN					a;
+	Etat					e1, e2, e3, e4;
+	
 	etats = new LinkedList<Etat>();
 	m = new HashMap<Integer, List<Transition>>();
 	transitions = new LinkedList<Transition>();
@@ -28,15 +28,15 @@ public class Main
 	transitions.add(new Transition(e1, e2, 't'));
 	transitions.add(new Transition(e1, e3, 'o'));
 	m.put(e1.getNum(), transitions);
-	transitions.clear();
+	transitions = new LinkedList<Transition>();
 	transitions.add(new Transition(e2, e3, 'o'));
 	transitions.add(new Transition(e2, e1, 't'));
 	m.put(e2.getNum(), transitions);
-	transitions.clear();
+	transitions = new LinkedList<Transition>();
 	transitions.add(new Transition(e3, e4, 't'));
 	transitions.add(new Transition(e3, e1, 'o'));
 	m.put(e3.getNum(), transitions);
-	transitions.clear();
+	transitions = new LinkedList<Transition>();
 	transitions.add(new Transition(e4, e4, 'o'));
 	transitions.add(new Transition(e4, e3, 't'));
 	m.put(e4.getNum(), transitions);
