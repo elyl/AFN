@@ -1,14 +1,14 @@
-package automates;
+
 
 public class Transition
 {
     private Etat	origine;
-    private Etat	Destination;
+    private Etat	destination;
     private char	symbole;
 
     public Transition(Etat origine, Etat destination, char symbole)
     {
-	this.origine = orgine;
+	this.origine = origine;
 	this.destination = destination;
 	this.symbole = symbole;
     }
@@ -26,5 +26,10 @@ public class Transition
     public char getSymbole()
     {
 	return (this.symbole);
+    }
+
+    public String toString()
+    {    
+	return ("Origine: " + origine + ", destination: " + destination + ", symbole: " + symbole);
     }
 }

@@ -1,4 +1,4 @@
-package automates;
+
 
 public interface Automata {
     public boolean accept(String mot);
