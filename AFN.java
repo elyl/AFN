@@ -3,6 +3,8 @@
 import java.util.List;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.LinkedList;
+import java.util.HashMap;
 
 public class AFN implements Automata
 {
@@ -58,13 +60,60 @@ public class AFN implements Automata
 	return (false);
     }
 
+    private Etat genererBloquant(List<Transition> tr)
+    {
+	int			i;
+	Iterator<Character>	itr;
+	Etat			trap;
+
+	trap = new Etat(false, new Integer(-1));
+	itr = this.alphabet.iterator();
+	while (itr.hasNext())
+	    tr.add(new Transition(trap, trap, itr.next().charValue()));
+	return (trap);
+    }
+
+    private List<Transition> addTransitions(Map<Integer, List<Transition>> m, List<Transition> l, Integer i)
+    {
+	m.put(i, l);
+	return (new LinkedList<Transition>());
+    }
+
+    /* Ca devait generer un nouvelle etat a partir d'une liste (regroupement...) mais j'ai pas trouve comment gerer la liste des transitions proprement dans la fonction appellante*/
+    private Etat genererNouvelEtat(List<Etat> l)
+    {
+	Iterator<Etat>	itr;
+	String		name;
+
+	name = "";
+	itr = l.iterator();
+	while (itr.hasNext())
+	    
+    }
+
     public AFN deterministic()
     {
-	return (null);
+	Etat				trap;
+	List<Etats>			eList;
+	List<Transition>		tr;
+	Map<Integer, List<Transition>>	trList;	
+
+	trList = new HashMap<Integer, List<Transition>>();
+	tr = new LinkedList<Transition>();
+	trap = this.genererBloquant(tr);
+	tr = addTransitions(trList, tr, trap.getNum());
+	/* Jusque la on a genere l'etat "bloquant" celui qu'on utilise pour boucher les trous.
+	   Il reste donc a generer les nouveaux etats avec leurs listes de transitions et remplir les listes de transitions des anciens etats*/
+	return (new AFN(eList, this.alphabet, trList);
     }
 
     public String toString()
     {
 	return ("I am the king");
+    }
+
+    public List<Character> getAlphabet()
+    {
+	return (this.alphabet);
     }
 }

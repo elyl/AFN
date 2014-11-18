@@ -13,7 +13,8 @@ public class Main
 	HashMap<Integer, List<Transition>>	m;
 	AFN					a;
 	Etat					e1, e2, e3, e4;
-	
+
+	System.out.println(new Integer(2).toString());
 	etats = new LinkedList<Etat>();
 	m = new HashMap<Integer, List<Transition>>();
 	transitions = new LinkedList<Transition>();
